@@ -73,5 +73,13 @@ Cosas a tener en cuenta:
 */
 
 function fitsInOneBox(boxes) {
-  return false
+  const orderBox = boxes.sort((a, b) => a.l - b.l)
+  
+  for(let box in orderBox){
+    if(orderBox[parseInt(box) + 1] !== undefined){
+      if(orderBox[box].l >= orderBox[parseInt(box) + 1].l || orderBox[box].w >= orderBox[parseInt(box) + 1].w || orderBox[box].h >= orderBox[parseInt(box) + 1].h) return false
+    }
+  }
+  
+  return true
 }
