@@ -51,5 +51,8 @@ Recuerda que:
 */
 
 function getFilesToBackup(lastBackup, changes) {
-  return []
+  return [... new Set(changes
+                      .filter(change => change[1] > lastBackup)
+                      .map(id => id[0])
+                      .sort((a, b) => a - b))]
 }

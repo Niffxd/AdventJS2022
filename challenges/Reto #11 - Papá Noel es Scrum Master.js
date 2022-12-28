@@ -39,5 +39,25 @@ Ten en cuenta:
 */
 
 function getCompleted(part, total) {
-  return '1/1'
+  function convertToSeconds(string){
+    let totalSeconds = 0
+    let pow = 3
+    string.split(':').map(item => {
+      pow--
+      totalSeconds += item * (60**pow)
+    })
+    return totalSeconds
+  }
+  
+  part = convertToSeconds(part)
+  total = convertToSeconds(total)
+  
+  if(total % part === 0){
+    return `1/${(total/part)}`
+  }else{
+    for(let i = 1; i < 10; i++){
+      if(Number.isSafeInteger((part / total) * i))
+      return `${(part / total) * i}/${i}`
+    }
+  }
 }

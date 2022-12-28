@@ -31,5 +31,12 @@ repuesto es válida o no con esa regla:
 */
 
 function checkPart(part) {
+  if(part === part.split('').reverse().join('')) return true
+  
+  for(let i = 0; i < part.length; i++){
+    let wordRef = part.substr(0, i) + part.substr(i+1)
+    if(wordRef === wordRef.split('').reverse().join('')) return true
+  }
+  
   return false
 }

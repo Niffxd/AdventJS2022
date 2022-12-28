@@ -50,5 +50,25 @@ A tener en cuenta:
 */
 
 function checkJump(heights) {
-  return false
+  const max = Math.max(...heights)
+  const leftArr = heights.slice(0, heights.indexOf(max))
+  const rightArr = heights.slice(heights.indexOf(max) + 1)
+  rightArr.unshift()
+  console.log(leftArr, rightArr)
+  
+  if(!leftArr.length || !rightArr.length) return false
+  
+  if(leftArr.length > 1){
+    for(let i = 0; i < leftArr.length; i++){
+      if(leftArr[i] > leftArr[i+1]) return false
+    }
+  }
+  
+  if(rightArr.length > 1){
+    for(let i = 0; i < rightArr.length; i++){
+      if(rightArr[i] < rightArr[i+1]) return false
+    }
+  }
+  
+  return true
 }

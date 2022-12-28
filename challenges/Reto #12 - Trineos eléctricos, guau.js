@@ -48,6 +48,8 @@ Recuerda que:
 
 */
 
-function selectSleigh(distance, sleighs) {
-  return ''
+function selectSleigh(distance, sleighs) { 
+  sleighs = sleighs.filter(sleigh => distance * sleigh.consumption <= 20)
+  if(!sleighs.length) return null
+  else return sleighs.pop().name
 }

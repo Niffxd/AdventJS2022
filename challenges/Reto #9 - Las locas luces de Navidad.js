@@ -48,5 +48,19 @@ A tener en cuenta:
 */
 
 function countTime(leds) {
-  return 0
+  if(!leds.includes(0) || !leds.includes(1)) return 0
+  const newLeds = [
+    ...leds.slice(leds.indexOf(1)),
+    ...leds.slice(0, leds.indexOf(1))
+  ]
+  leds = [... newLeds]
+  for(let i = 0; i < leds.length; i++){
+    if(!leds.includes(0) || !leds.includes(1)) return i*7
+    for(let j = 0; j < leds.length; j++){
+      if(!leds[j]){
+        if(leds[j-1]) newLeds[j] = 1
+      }
+    }
+    leds = [... newLeds]
+  }
 }

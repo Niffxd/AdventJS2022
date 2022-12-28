@@ -54,5 +54,16 @@ A tener en cuenta:
 */
 
 function createCube(size) {
-  return ''
+  const finalCube = []
+  
+  for(let i = 1; i <= size; i++){
+    finalCube.push(' '.repeat(size - i), '/\\'.repeat(i), '_\\'.repeat(size), '\n')
+  }
+  
+  for(let i = size; i > 0; i--){
+    finalCube.push(' '.repeat(size - i), '\\/'.repeat(i), '_/'.repeat(size))
+    if(i !== 1 ) finalCube.push('\n')
+  }
+  
+  return finalCube.join('')
 }
